@@ -1,2 +1,0 @@
-# huobz
-Software ecosystem 
