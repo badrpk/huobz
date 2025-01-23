@@ -15,17 +15,18 @@ jobs:
         with:
           python-version: '3.9'
       - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Run Tests
-        run: |
-          pytest tests/
+        run: pytest --cov=your_module tests/
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Add SSH Key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Deploy to Server
-        run: |
-          ssh user@server.com 'bash deploy.sh'
+        run: ssh user@server.com 'bash deploy.sh'
