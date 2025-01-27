@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Here’s a detailed list of one-liner instructions for software developers for each module, along with guidelines for Huobz ID management and security.
 
 
@@ -373,3 +374,6 @@ Universal Unique ID: Use the user's mobile number (verified via OTP) as the prim
 3-Factor Verification: Implement SMS OTP, biometrics (fingerprint/iris/face), and secret key at account opening.
 
 Secondary Accounts: Allow multiple SIMs per user but
+=======
+# Huobz Project
+>>>>>>> ee15733af9196aa7634086c3602b7dbd4b830c07

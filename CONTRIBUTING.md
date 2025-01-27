@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 To maximize contributors and engagement for the Huobz repository on GitHub, you need a structured plan to attract enthusiasts, freelancers, and developers. Here’s a step-by-step plan:
 
 
@@ -233,3 +234,24 @@ Key Messaging to Contributors
 
 Let me know if you'd like help drafting communication materials (social posts, emails, etc.) or setting up specific bounties!
 
+=======
+# Contributing to Huobz
+
+Thank you for your interest in contributing to Huobz! Here's how you can help:
+
+## Reporting Issues
+- Check if the issue already exists in the [issues list](https://github.com/badrpk/huobz/issues).
+- If not, create a new issue with detailed information.
+
+## Submitting Code
+1. Fork the repository.
+2. Create a new branch for your feature/fix.
+3. Make your changes and write tests.
+4. Submit a pull request.
+
+## Style Guide
+- Follow the existing code style.
+- Use meaningful commit messages.
+
+We look forward to your contributions!
+>>>>>>> ee15733af9196aa7634086c3602b7dbd4b830c07
