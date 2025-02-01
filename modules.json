@@ -1,0 +1,21 @@
+{
+  "HuobzAI": ["HuobzAIEngine", "HuobzNeural", "HuobzAutomation", "HuobzAIResearch"],
+  "HuobzCloud": ["HuobzCloudCompute", "HuobzCloudStorage", "HuobzCloudSecurity"],
+  "HuobzCommerce": ["HuobzECommerce", "HuobzMart", "HuobzRetail", "HuobzSubscriptions", "HuobzRealEstate"],
+  "HuobzDevelopment": ["HuobzLang", "HuobzSoftwareProgrammer", "HuobzCodeAI", "HuobzDevOps"],
+  "HuobzEducation": ["HuobzScholar", "HuobzResearch", "HuobzSkillHub", "HuobzEduVR"],
+  "HuobzEntertainment": ["HuobzFlix", "HuobzGaming", "HuobzInteractiveStreaming", "HuobzMusic", "HuobzARMusic"],
+  "HuobzFinancials": ["HuobzCoins", "HuobzTokenization", "HuobzCrypto", "HuobzFinancials"],
+  "HuobzFood": ["HuobzFoodDelivery", "HuobzGrocery", "HuobzRestaurants"],
+  "HuobzGovernance": ["HuobzDashboard", "HuobzGovernancePlatform", "HuobzModules"],
+  "HuobzGreenTech": ["HuobzRenewable", "HuobzEnergyGrid", "HuobzClimate", "HuobzSolarAnalytics"],
+  "HuobzHealth": ["HuobzHealthAI", "HuobzMedTech", "HuobzWellness", "HuobzDigitalTherapy"],
+  "HuobzLogistics": ["HuobzFleet", "HuobzPublicTransit", "HuobzRideHailing", "HuobzFreight", "HuobzLastMile"],
+  "HuobzSocial": ["HuobzMessaging", "HuobzSocialNetwork", "HuobzDating", "HuobzCommunity"],
+  "HuobzTravel": ["HuobzHyperloop", "HuobzAeroSpace", "HuobzAutoPilot", "HuobzEVCharging"],
+  "HuobzIoT": ["HuobzIoT", "HuobzCellular", "HuobzVPN", "HuobzFileShare"],
+  "HuobzSecurity": ["HuobzSecurity", "HuobzAuthenticator", "HuobzDigitalID"],
+  "HuobzQuantum": ["HuobzQuantumComputing", "HuobzNeural", "HuobzBioCompute"],
+  "HuobzSpace": ["HuobzSpaceTech", "HuobzSatellite", "HuobzAstro"],
+  "HuobzSustainability": ["HuobzWaste", "HuobzWater", "HuobzCarbonTrading"]
+}
