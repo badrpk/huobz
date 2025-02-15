@@ -2,26 +2,23 @@
 #include "core/HuobzNeuron.h"
 #include "core/HuobzSynapse.h"
 #include "memory/HuobzMemory.h"
-#include <unistd.h> // For sleep function
+#include "neurotransmitters/HuobzNeurotransmitter.h"
+#include "emotions/HuobzEmotion.h"
 
 int main() {
     HuobzNeuron n1, n2;
     HuobzSynapse s1(&n1, &n2);
     HuobzMemory memorySystem;
+    HuobzNeurotransmitter dopamine(5.0);
+    HuobzEmotion happiness(&dopamine, &memorySystem);
 
-    // Store in different memory types
-    memorySystem.storeShortTerm("Meeting at 3 PM.");
-    memorySystem.storeLongTerm("project", "Complete HuobzAI research.");
-    memorySystem.storeSubconscious("self-worth", "I am capable and strong.");
+    // Store an emotionally significant memory
+    memorySystem.storeLongTerm("first_success", "Winning the coding competition.");
 
-    // Simulate time passing
-    sleep(5);
-    memorySystem.applyMemoryDecay();
-
-    // Recall memories
-    std::cout << "Short-Term Memory Recall: " << memorySystem.recallShortTerm() << std::endl;
-    std::cout << "Long-Term Memory Recall: " << memorySystem.recallLongTerm("project") << std::endl;
-    std::cout << "Subconscious Memory Recall: " << memorySystem.recallSubconscious("self-worth") << std::endl;
+    // React to stored memory
+    happiness.reactToMemory("first_success");
+    
+    std::cout << "Emotion Intensity After Memory Recall: " << happiness.intensity << std::endl;
 
     return 0;
 }
