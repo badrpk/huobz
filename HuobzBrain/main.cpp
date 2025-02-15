@@ -4,21 +4,35 @@
 #include "memory/HuobzMemory.h"
 #include "neurotransmitters/HuobzNeurotransmitter.h"
 #include "emotions/HuobzEmotion.h"
+#include "emotions/HuobzMood.h"
+#include <unistd.h>  // For sleep
 
 int main() {
     HuobzNeuron n1, n2;
     HuobzSynapse s1(&n1, &n2);
     HuobzMemory memorySystem;
     HuobzNeurotransmitter dopamine(5.0);
-    HuobzEmotion happiness(&dopamine, &memorySystem);
+    HuobzNeurotransmitter serotonin(6.0);
+
+    HuobzEmotion happiness("happiness", &dopamine, &memorySystem);
+    HuobzEmotion calmness("calmness", &serotonin, &memorySystem);
+
+    HuobzMood moodSystem;
+    moodSystem.addEmotion(&happiness);
+    moodSystem.addEmotion(&calmness);
 
     // Store an emotionally significant memory
-    memorySystem.storeLongTerm("first_success", "Winning the coding competition.");
+    memorySystem.storeLongTerm("promotion", "Got a job promotion!");
 
     // React to stored memory
-    happiness.reactToMemory("first_success");
-    
-    std::cout << "Emotion Intensity After Memory Recall: " << happiness.intensity << std::endl;
+    happiness.reactToMemory("promotion");
+
+    // Determine mood before decay
+    std::cout << "Initial Mood: " << moodSystem.determineMood() << std::endl;
+
+    // Simulate time passing (30 seconds)
+    sleep(30);
+    std::cout << "Mood After Emotional Decay: " << moodSystem.determineMood() << std::endl;
 
     return 0;
 }
