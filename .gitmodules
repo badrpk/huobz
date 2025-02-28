@@ -1,0 +1,6 @@
+[submodule "models/Qwen-7B"]
+	path = models/Qwen-7B
+	url = https://github.com/Qwen-7B.git
+[submodule "models/einops"]
+	path = models/einops
+	url = https://github.com/arogozhnikov/einops.git
