@@ -1,0 +1,34 @@
+name: Run Qwen as Stream Generator
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:  # Allows manual execution from GitHub Actions UI
+
+jobs:
+  run-qwen-stream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install transformers_stream_generator qwen
+
+      - name: Run Qwen as a Stream Generator
+        run: |
+          python -c "
+          from transformers_stream_generator import StreamGenerator
+          from qwen import QwenModel
+          model = QwenModel.from_pretrained('Qwen-7B')
+          generator = StreamGenerator(model)
+          print(generator.stream('Hello, Qwen!'))
+          "
