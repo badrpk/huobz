@@ -1,0 +1,23 @@
+name: Install Transformers Stream Generator
+
+on:
+  push:
+    branches:
+      - master  # Run the workflow when pushing to master
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install transformers_stream_generator --no-cache-dir
