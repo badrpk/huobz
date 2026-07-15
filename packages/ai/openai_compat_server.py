@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import payments as pay
+import auth as authmod
 
 MODELS = [
     {"id": "huobz-edge-mini", "object": "model", "owned_by": "huobz"},
@@ -29,10 +30,15 @@ class H(BaseHTTPRequestHandler):
         return json.loads(self.rfile.read(n).decode() or "{}") if n else {}
     def do_OPTIONS(self): self._send(204, {})
     def do_GET(self):
+        _path_early = (self.path.split("?")[0].rstrip("/") or "/")
+        if _path_early.startswith("/auth"):
+            hdrs = {k: v for k, v in self.headers.items()}
+            code, body = authmod.handle_auth_request("GET", _path_early, {}, hdrs, product="huobz")
+            return self._send(code, body)
         path = urlparse(self.path).path
         if path in ("/", "/health"):
             return self._send(200, {"ok": True, "service": "huobz-ai", "version": "3.0.0", "parity_target": "OpenAI/Ollama",
-                "gaps_closed": ["usage_billing", "api_keys_stub", "function_calling_echo", "stripe"]})
+                "gaps_closed": ["usage_billing", "api_keys_stub", "function_calling_echo", "stripe", "signup", "login", "otp", "oauth_google", "oauth_facebook"]})
         if path == "/capabilities":
             return self._send(200, {"ok": True, "competitor": "OpenAI + Ollama", "features": [
                 "chat_completions","models","embeddings","tools","edge","usage","billing","stripe"]})
@@ -45,6 +51,12 @@ class H(BaseHTTPRequestHandler):
         if path == "/v1/usage": return self._send(200, {"ok": True, "usage": USAGE})
         self._send(404, {"error": "not_found"})
     def do_POST(self):
+        _path_early = (self.path.split("?")[0].rstrip("/") or "/")
+        if _path_early.startswith("/auth"):
+            hdrs = {k: v for k, v in self.headers.items()}
+            body = self._read_json() if hasattr(self, "_read_json") else self._read()
+            code, resp = authmod.handle_auth_request("POST", _path_early, body if isinstance(body, dict) else {}, hdrs, product="huobz")
+            return self._send(code, resp)
         path = urlparse(self.path).path
         body = self._read()
         if path in ("/v1/chat/completions", "/api/chat"):
