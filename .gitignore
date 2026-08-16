@@ -1,2 +1,7 @@
 *.env
 __pycache__/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
